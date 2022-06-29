@@ -118,32 +118,13 @@ document.addEventListener('alignUserNFTs', function(e) {
         data: document.querySelector("[annotationname = 'userProfile']").getAttribute("data-image-base64") !== null ? document.querySelector("[annotationname = 'userProfile']").getAttribute("data-image-base64") : document.querySelector("[annotationname = 'userProfile']").src,
         name: document.querySelector("[annotationname = 'userProfile']").getAttribute("name")
       };
-      user['BioUser'] = document.querySelector("[annotationname = 'BioUser']").value;apiUserApi.createuser( user, (error, data, response) => { if (error) {console.error(error);} else { console.log('API called successfully. Returned data: ' + data); {  location.href= '/HOMEPAGE/'+response.body.query._id+'' ;}}});};window.onload = () => {apiNftApi.getAllnft((error, data, response) => { if (error) {console.error(error);} else { console.log('API called successfully. Returned data: ' + data); const subDataElements =[...document.getElementById("ifz6j").querySelectorAll( "[dataitem='true']" )].filter(
+      user['BioUser'] = document.querySelector("[annotationname = 'BioUser']").value;user["UserNFTs"] = [...document.querySelector("[annotationname = 'UserNFTs']").querySelectorAll("[arrayvalue]")].map(li=> li.getAttribute('arrayvalue'));apiUserApi.createuser( user, (error, data, response) => { if (error) {console.error(error);} else { console.log('API called successfully. Returned data: ' + data); {  location.href= '/HOMEPAGE/'+response.body.query._id+'' ;}}});};window.onload = () => {apiNftApi.getAllnft((error, data, response) => { if (error) {console.error(error);} else { console.log('API called successfully. Returned data: ' + data); const subDataElements =[...document.getElementById("ifz6j").querySelectorAll( "[dataitem='true']" )].filter(
     (element, index, array) =>
     !array.reduce((hasAncestorFlag, dataItem) => hasAncestorFlag || (element.compareDocumentPosition(dataItem) & Node.DOCUMENT_POSITION_CONTAINS) === 8, false)
-  );const map = new Map();
-    if( data.length > subDataElements.length){
-      for(let i = 0; i <=  data.length - subDataElements.length; i++){
-        let parentNode = subDataElements[0].parentNode;
-        let child = parentNode.childNodes[0].cloneNode(true);
-        parentNode.appendChild(child);
-        subDataElements.push(child);
-      }
-    }
-    data.forEach((item,i) => {
+  );const map = new Map();  data.forEach((item,i) => {
     if(subDataElements.length > i)
       {
-        try { 
-      const insideSubDataElement = subDataElements[i].querySelector("[annotationname = 'NFTtitle']");
-      if(insideSubDataElement !== null){
-        insideSubDataElement.textContent = data[data.length -i -1].NFTtitle;
-        insideSubDataElement.value=data[data.length -i -1]._id;
-      }
-      else if(subDataElements[i].getAttribute('annotationname') === 'NFTtitle'){
-        subDataElements[i].textContent = data[data.length -i -1].NFTtitle;
-        subDataElements[i].value=data[data.length -i -1]._id;
-      }
-     } catch (e) { console.log(e) };
+        console.log('There are no inside data elements');
         map.set(subDataElements[i].getAttribute('id'), data[data.length-i-1])
         
       }

@@ -72,12 +72,6 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property nFTCategory (base name: "NFTCategory")', function() {
-      // uncomment below and update the code to test the property nFTCategory
-      //var instance = new TempApi.Categorynft();
-      //expect(instance).to.be();
-    });
-
   });
 
 }));

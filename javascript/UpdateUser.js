@@ -117,7 +117,7 @@ document.addEventListener('alignUserNFTs', function(e) {
     let userId = window.location.pathname.replace('/UpdateUser/','');let user = new TempApi.User();user['Username'] = document.querySelector("[annotationname = 'Username']").value;user['userProfile'] = {
         data: document.querySelector("[annotationname = 'userProfile']").getAttribute("data-image-base64") !== null ? document.querySelector("[annotationname = 'userProfile']").getAttribute("data-image-base64") : document.querySelector("[annotationname = 'userProfile']").src,
         name: document.querySelector("[annotationname = 'userProfile']").getAttribute("name")
-      };user['BioUser'] = document.querySelector("[annotationname = 'BioUser']").value; let opts = {user};apiUserApi.updateuser( userId, opts, (error, data, response) => { if (error) {console.error(error);} else { console.log('API called successfully. Returned data: ' + data); document.querySelector('[annotationname = Username]').value = response.body.query.Username ;
+      };user['BioUser'] = document.querySelector("[annotationname = 'BioUser']").value;user['UserNFTs'] = arrayiuo8h.map(item => item.value); let opts = {user};apiUserApi.updateuser( userId, opts, (error, data, response) => { if (error) {console.error(error);} else { console.log('API called successfully. Returned data: ' + data); document.querySelector('[annotationname = Username]').value = response.body.query.Username ;
       if(response.body.query.userProfile !== undefined){
 
         if(document.querySelector('[annotationname = userProfile]').getAttribute('type') === 'file'){
@@ -128,7 +128,7 @@ document.addEventListener('alignUserNFTs', function(e) {
         }
         document.querySelector('[annotationname = userProfile]').name = response.body.query.userProfile.name;
       }
-      document.querySelector('[annotationname = BioUser]').value = response.body.query.BioUser ;{  location.href= '/HOMEPAGE/'+response.body.query._id+'' ;}}});};window.onload = () => {let userId = window.location.pathname.replace('/UpdateUser/','');apiUserApi.getuser( userId, (error, data, response) => { if (error) {console.error(error);} else { console.log('API called successfully. Returned data: ' + data); const map = new Map();try { document.querySelector('[annotationname = Username]').value = response.body.query.Username; } catch (e) { console.log(e) };try { 
+      document.querySelector('[annotationname = BioUser]').value = response.body.query.BioUser ;initializearrayiuo8h(response.body.query.UserNFTs|| []) ; {  location.href= '/HOMEPAGE/'+response.body.query._id+'' ;}}});};window.onload = () => {let userId = window.location.pathname.replace('/UpdateUser/','');apiUserApi.getuser( userId, (error, data, response) => { if (error) {console.error(error);} else { console.log('API called successfully. Returned data: ' + data); const map = new Map();try { document.querySelector('[annotationname = Username]').value = response.body.query.Username; } catch (e) { console.log(e) };try { 
       if(response.body.query.userProfile !== undefined){
         if(document.querySelector('[annotationname = userProfile]').getAttribute('type') === 'file'){
           document.querySelector('[annotationname = userProfile]').setAttribute('data-image-base64',response.body.query.userProfile.data);
@@ -144,7 +144,69 @@ document.addEventListener('alignUserNFTs', function(e) {
         }
         document.querySelector('[annotationname = userProfile]').name = response.body.query.userProfile.name ;
       }
-       } catch (e) { console.log(e) };try { document.querySelector('[annotationname = BioUser]').value = response.body.query.BioUser; } catch (e) { console.log(e) };window.localStorage.setItem('data', JSON.stringify(Array.from(map.entries())));}});apiNftApi.getAllnft((error, data, response) => { if (error) {console.error(error);} else { console.log('API called successfully. Returned data: ' + data); const subDataElements =[...document.getElementById("iz4l6").querySelectorAll( "[dataitem='true']" )].filter(
+       } catch (e) { console.log(e) };try { document.querySelector('[annotationname = BioUser]').value = response.body.query.BioUser; } catch (e) { console.log(e) };try { 
+        document.querySelector('[annotationname = NFTOwner]').setAttribute('selected-element',response.body.query.NFTOwner.undefined);
+        const insideSubdocument = document.querySelector("[annotationname = 'NFTOwner']");
+        if (insideSubdocument !==null) {
+           try {const attributeSubdocumentElement = insideSubdocument.querySelector("[annotationname = 'Username']"); if (attributeSubdocumentElement !== null) { attributeSubdocumentElement.value = response.body.query.NFTOwner.Username;}} catch (e) {console.log(e);}; try {const attributeSubdocumentElement = insideSubdocument.querySelector("[annotationname = 'userProfile']"); if (attributeSubdocumentElement !== null) { attributeSubdocumentElement.value = response.body.query.NFTOwner.userProfile;}} catch (e) {console.log(e);}; try {const attributeSubdocumentElement = insideSubdocument.querySelector("[annotationname = 'BioUser']"); if (attributeSubdocumentElement !== null) { attributeSubdocumentElement.value = response.body.query.NFTOwner.BioUser;}} catch (e) {console.log(e);}; try {const attributeSubdocumentElement = insideSubdocument.querySelector("[annotationname = 'UserNFTs']"); if (attributeSubdocumentElement !== null) { attributeSubdocumentElement.textContent = response.body.query.NFTOwner.UserNFTs;}} catch (e) {console.log(e);}; try {const attributeSubdocumentElement = insideSubdocument.querySelector("[annotationname = 'UserNFTs']"); if (attributeSubdocumentElement !== null) { attributeSubdocumentElement.value = response.body.query.NFTOwner.UserNFTs;}} catch (e) {console.log(e);};
+        }
+      if(response.body.query.NFTOwner._id){
+        map.set(
+          document.querySelector(
+            "[annotationname = 'NFTOwner']"
+          ).getAttribute("id"),
+          response.body.query.NFTOwner
+        );
+      }
+     } catch (e) { console.log(e) };try { 
+        document.querySelector('[annotationname = UserNFTs]').setAttribute('selected-element',response.body.query.UserNFTs.NFTtitle);document.dispatchEvent(new Event("alignUserNFTs"));
+        const insideSubdocument = document.querySelector("[annotationname = 'UserNFTs']");
+        if (insideSubdocument !==null) {
+          const tableData = response.body.query.UserNFTs;
+    initializearrayiuo8h(tableData); 
+ refreshULi9k69();
+    const tableDataElement = insideSubdocument.querySelectorAll("[dataitem='true']");
+    tableData.forEach((data,index) => {
+      if(tableDataElement.length < index) {
+        return;
+      }
+       try {
+      const attributeSubdocumentElement = tableDataElement[
+        index
+      ].querySelector("[annotationname = 'NFTtitle']");
+      if (attributeSubdocumentElement !== null) {
+        attributeSubdocumentElement.textContent = tableData[tableData.length - index -1].NFTtitle;
+      }
+    }
+    catch(e) {console.log(e);};
+      
+      map.set(
+        tableDataElement[index].getAttribute("id"),
+        tableData[tableData.length - index -1]
+      );
+    
+    });
+    
+      [...tableDataElement].forEach((element, index) => {
+        if (index >= tableData.length) {
+          tableDataElement[index].style.display = "none";
+        }
+        else {
+          tableDataElement[index].style.display = "";
+        }
+      });
+    
+    
+        }
+      if(response.body.query.UserNFTs._id){
+        map.set(
+          document.querySelector(
+            "[annotationname = 'UserNFTs']"
+          ).getAttribute("id"),
+          response.body.query.UserNFTs
+        );
+      }
+     } catch (e) { console.log(e) };window.localStorage.setItem('data', JSON.stringify(Array.from(map.entries())));}});apiNftApi.getAllnft((error, data, response) => { if (error) {console.error(error);} else { console.log('API called successfully. Returned data: ' + data); const subDataElements =[...document.getElementById("iz4l6").querySelectorAll( "[dataitem='true']" )].filter(
     (element, index, array) =>
     !array.reduce((hasAncestorFlag, dataItem) => hasAncestorFlag || (element.compareDocumentPosition(dataItem) & Node.DOCUMENT_POSITION_CONTAINS) === 8, false)
   );const map = new Map();

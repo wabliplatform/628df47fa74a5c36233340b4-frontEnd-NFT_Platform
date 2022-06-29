@@ -12,6 +12,7 @@
  */
 
 import ApiClient from '../ApiClient';
+import Nft from './Nft';
 import NftNFTimage from './NftNFTimage';
 
 /**
@@ -26,10 +27,11 @@ class User {
      * @param username {String} 
      * @param userProfile {module:model/NftNFTimage} 
      * @param bioUser {String} 
+     * @param userNFTs {Array.<module:model/Nft>} 
      */
-    constructor(username, userProfile, bioUser) { 
+    constructor(username, userProfile, bioUser, userNFTs) { 
         
-        User.initialize(this, username, userProfile, bioUser);
+        User.initialize(this, username, userProfile, bioUser, userNFTs);
     }
 
     /**
@@ -37,10 +39,11 @@ class User {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, username, userProfile, bioUser) { 
+    static initialize(obj, username, userProfile, bioUser, userNFTs) { 
         obj['Username'] = username;
         obj['userProfile'] = userProfile;
         obj['BioUser'] = bioUser;
+        obj['UserNFTs'] = userNFTs;
     }
 
     /**
@@ -65,6 +68,9 @@ class User {
             }
             if (data.hasOwnProperty('BioUser')) {
                 obj['BioUser'] = ApiClient.convertToType(data['BioUser'], 'String');
+            }
+            if (data.hasOwnProperty('UserNFTs')) {
+                obj['UserNFTs'] = ApiClient.convertToType(data['UserNFTs'], [Nft]);
             }
         }
         return obj;
@@ -92,6 +98,11 @@ User.prototype['userProfile'] = undefined;
  * @member {String} BioUser
  */
 User.prototype['BioUser'] = undefined;
+
+/**
+ * @member {Array.<module:model/Nft>} UserNFTs
+ */
+User.prototype['UserNFTs'] = undefined;
 
 
 

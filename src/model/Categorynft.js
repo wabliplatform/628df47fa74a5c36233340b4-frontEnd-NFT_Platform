@@ -24,11 +24,10 @@ class Categorynft {
      * @alias module:model/Categorynft
      * @param titleCategoryNFT {String} 
      * @param nFTCategorydescription {String} 
-     * @param nFTCategory {module:model/Categorynft} 
      */
-    constructor(titleCategoryNFT, nFTCategorydescription, nFTCategory) { 
+    constructor(titleCategoryNFT, nFTCategorydescription) { 
         
-        Categorynft.initialize(this, titleCategoryNFT, nFTCategorydescription, nFTCategory);
+        Categorynft.initialize(this, titleCategoryNFT, nFTCategorydescription);
     }
 
     /**
@@ -36,10 +35,9 @@ class Categorynft {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, titleCategoryNFT, nFTCategorydescription, nFTCategory) { 
+    static initialize(obj, titleCategoryNFT, nFTCategorydescription) { 
         obj['titleCategoryNFT'] = titleCategoryNFT;
         obj['NFTCategorydescription'] = nFTCategorydescription;
-        obj['NFTCategory'] = nFTCategory;
     }
 
     /**
@@ -62,9 +60,6 @@ class Categorynft {
             if (data.hasOwnProperty('NFTCategorydescription')) {
                 obj['NFTCategorydescription'] = ApiClient.convertToType(data['NFTCategorydescription'], 'String');
             }
-            if (data.hasOwnProperty('NFTCategory')) {
-                obj['NFTCategory'] = ApiClient.convertToType(data['NFTCategory'], Categorynft);
-            }
         }
         return obj;
     }
@@ -86,11 +81,6 @@ Categorynft.prototype['titleCategoryNFT'] = undefined;
  * @member {String} NFTCategorydescription
  */
 Categorynft.prototype['NFTCategorydescription'] = undefined;
-
-/**
- * @member {module:model/Categorynft} NFTCategory
- */
-Categorynft.prototype['NFTCategory'] = undefined;
 
 
 

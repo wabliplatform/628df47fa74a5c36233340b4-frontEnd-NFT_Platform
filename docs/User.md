@@ -8,5 +8,6 @@ Name | Type | Description | Notes
 **username** | **String** |  | 
 **userProfile** | [**NftNFTimage**](NftNFTimage.md) |  | 
 **bioUser** | **String** |  | 
+**userNFTs** | [**[Nft]**](Nft.md) |  | 
 
 

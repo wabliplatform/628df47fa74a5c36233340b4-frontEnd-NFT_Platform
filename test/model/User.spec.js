@@ -78,6 +78,12 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property userNFTs (base name: "UserNFTs")', function() {
+      // uncomment below and update the code to test the property userNFTs
+      //var instance = new TempApi.User();
+      //expect(instance).to.be();
+    });
+
   });
 
 }));
