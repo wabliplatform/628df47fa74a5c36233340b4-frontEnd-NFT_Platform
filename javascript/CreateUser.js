@@ -1,4 +1,4 @@
-let apiNftApi = new TempApi.NftApi();import TempApi from '../src/index';let apiUserApi = new TempApi.UserApi();let user = new TempApi.User();
+
  function calculateSize(img, maxWidth, maxHeight) {
       let width = img.width;
       let height = img.height;
@@ -112,25 +112,4 @@ document.addEventListener('alignUserNFTs', function(e) {
         optionElement.setAttribute("selected", true);
     }
   );
-});document.getElementById('iq62l').onclick = (event) => {
-    event.preventDefault();
-    user['Username'] = document.querySelector("[annotationname = 'Username']").value;user['userProfile'] = {
-        data: document.querySelector("[annotationname = 'userProfile']").getAttribute("data-image-base64") !== null ? document.querySelector("[annotationname = 'userProfile']").getAttribute("data-image-base64") : document.querySelector("[annotationname = 'userProfile']").src,
-        name: document.querySelector("[annotationname = 'userProfile']").getAttribute("name")
-      };
-      user['BioUser'] = document.querySelector("[annotationname = 'BioUser']").value;user["UserNFTs"] = [...document.querySelector("[annotationname = 'UserNFTs']").querySelectorAll("[arrayvalue]")].map(li=> li.getAttribute('arrayvalue'));apiUserApi.createuser( user, (error, data, response) => { if (error) {console.error(error);} else { console.log('API called successfully. Returned data: ' + data); {  location.href= '/HOMEPAGE/'+response.body.query._id+'' ;}}});};window.onload = () => {apiNftApi.getAllnft((error, data, response) => { if (error) {console.error(error);} else { console.log('API called successfully. Returned data: ' + data); const subDataElements =[...document.getElementById("ifz6j").querySelectorAll( "[dataitem='true']" )].filter(
-    (element, index, array) =>
-    !array.reduce((hasAncestorFlag, dataItem) => hasAncestorFlag || (element.compareDocumentPosition(dataItem) & Node.DOCUMENT_POSITION_CONTAINS) === 8, false)
-  );const map = new Map();  data.forEach((item,i) => {
-    if(subDataElements.length > i)
-      {
-        console.log('There are no inside data elements');
-        map.set(subDataElements[i].getAttribute('id'), data[data.length-i-1])
-        
-      }
-      document.dispatchEvent(new Event("alignUserNFTs"))
-    });
-
-    window.localStorage.setItem('data', JSON.stringify(Array.from(map.entries())));
-    
-    [...subDataElements].forEach((element,index) => {if(index >= data.length) subDataElements[index].style.display = 'none';})}});};
+});window.onload = () => {};

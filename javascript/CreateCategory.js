@@ -1,3 +1,1 @@
-let apiCategorynftApi = new TempApi.CategorynftApi();import TempApi from '../src/index';let categorynft = new TempApi.Categorynft();document.getElementById('iq62l').onclick = (event) => {
-    event.preventDefault();
-    categorynft['titleCategoryNFT'] = document.querySelector("[annotationname = 'titleCategoryNFT']").value;categorynft['NFTCategorydescription'] = document.querySelector("[annotationname = 'NFTCategorydescription']").value;apiCategorynftApi.createcategorynft( categorynft, (error, data, response) => { if (error) {console.error(error);} else { console.log('API called successfully. Returned data: ' + data); {  location.href= '/HOMEPAGE/'+response.body.query._id+'' ;}}});};window.onload = () => {};
+window.onload = () => {};

@@ -1,4 +1,4 @@
-let apiCategorynftApi = new TempApi.CategorynftApi();import TempApi from '../src/index';let apiNftApi = new TempApi.NftApi();let nft = new TempApi.Nft();document.addEventListener('alignNFTCategory', function(e) {
+document.addEventListener('alignNFTCategory', function(e) {
   const advanceSelect = document.getElementById('i8cxo');
   const selectedElement = advanceSelect.getAttribute('selected-element');
   if (!selectedElement) return;
@@ -77,25 +77,4 @@ document.getElementById('formFile').addEventListener("change", async(e) => {
           QUALITY
         );
       };});
-document.getElementById('iq62l').onclick = (event) => {
-    event.preventDefault();
-    nft['NFTtitle'] = document.querySelector("[annotationname = 'NFTtitle']").value;nft['NFTimage'] = {
-        data: document.querySelector("[annotationname = 'NFTimage']").getAttribute("data-image-base64") !== null ? document.querySelector("[annotationname = 'NFTimage']").getAttribute("data-image-base64") : document.querySelector("[annotationname = 'NFTimage']").src,
-        name: document.querySelector("[annotationname = 'NFTimage']").getAttribute("name")
-      };
-      nft['NFTprice'] = document.querySelector("[annotationname = 'NFTprice']").value;nft['NFTdescription'] = document.querySelector("[annotationname = 'NFTdescription']").value;nft['NFTCategory'] = document.querySelector("[annotationname = 'NFTCategory']").value;apiNftApi.createnft( nft, (error, data, response) => { if (error) {console.error(error);} else { console.log('API called successfully. Returned data: ' + data); }});};window.onload = () => {apiCategorynftApi.getAllcategorynft((error, data, response) => { if (error) {console.error(error);} else { console.log('API called successfully. Returned data: ' + data); const subDataElements =[...document.getElementById("ixfsk").querySelectorAll( "[dataitem='true']" )].filter(
-    (element, index, array) =>
-    !array.reduce((hasAncestorFlag, dataItem) => hasAncestorFlag || (element.compareDocumentPosition(dataItem) & Node.DOCUMENT_POSITION_CONTAINS) === 8, false)
-  );const map = new Map();  data.forEach((item,i) => {
-    if(subDataElements.length > i)
-      {
-        console.log('There are no inside data elements');
-        map.set(subDataElements[i].getAttribute('id'), data[data.length-i-1])
-        
-      }
-      document.dispatchEvent(new Event("alignNFTCategory"))
-    });
-
-    window.localStorage.setItem('data', JSON.stringify(Array.from(map.entries())));
-    
-    [...subDataElements].forEach((element,index) => {if(index >= data.length) subDataElements[index].style.display = 'none';})}});};
+window.onload = () => {};
